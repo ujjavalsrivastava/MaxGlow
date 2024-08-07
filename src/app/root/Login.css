@@ -1,0 +1,27 @@
+.login-logo, .register-logo {
+	font-size: 35px;
+	text-align: center;
+	margin-bottom: 25px;
+	font-weight: 300
+}
+.login-logo a, .register-logo a {
+	color: #444
+}
+.login-page, .register-page {
+	background: url(../../../public/dist/img/body-bg.jpg) no-repeat center top;
+	background-size: cover;
+}
+.login-page.sty1, .register-page.sty1 {
+	background: url(../../../public/dist/img/body-bg1.jpg) no-repeat center top;
+	background-size: cover;
+}
+.login-box, .register-box {
+	width: 400px;
+	margin: 7% auto;
+}
+.login-box.sty1, .register-box.sty1 {
+	right: 0px;
+	position: absolute;
+	height: 100%;
+	margin: 0;
+}
