@@ -6,6 +6,7 @@ export async function fetchData(endpoint, options = {}) {
     const url = `${import.meta.env.VITE_BACKEND_URL}${endpoint}`;
     const headers = {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
         ...options.headers,
     };
 
