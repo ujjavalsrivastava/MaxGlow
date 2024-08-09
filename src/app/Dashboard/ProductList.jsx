@@ -1,4 +1,32 @@
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { fetchData } from "../../helper/api";
+
 const ProductList = ()=>{
+
+
+const[data,setData] = useState(null);
+
+const fetchProduct = async()=>{
+   try { 
+    
+       const response = await fetchData('/user/getAllProductList', {
+         method: 'GET',
+     });
+      
+     setData(response.model)
+     } catch (error) {
+       toast.error(error.message);
+     }
+}
+
+console.log('data '+ JSON.stringify(data));
+
+
+useEffect(()=>{
+  fetchProduct();
+},[])
+
     return (
         <>
         
@@ -26,219 +54,24 @@ const ProductList = ()=>{
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
+                      {data && data.map(row =>(
+                        <tr>
+                        <td>{row.productCategoryCode}</td>
+                        <td>{row.productCode}</td>
+                        <td>{row.productName}
+                          <br/>
+                          <img src={row.productImage} class="img-responsive" />
+                        </td>
+                        <td>{row.productUnitValue}</td>
+                        <td>{row.productUM}</td>
+                        <td>{row.productPrice}</td>
+                        <td><span class={row.productStatus ? 'label label-success':'label label-danger'}>{row.productStatus?'Active':'InActive'}</span></td>
+                        <td><i class="fa fa-pencil" aria-hidden="true"></i></td>
                       </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-warning">Inactive</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-warning">Inactive</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                      <tr>
-                        <td>1001</td>
-                        <td>S00</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>299</td>
-                        <td><span class="label label-success">Active</span></td>
-                        <td>03-10-2017</td>
-                      </tr>
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                        <th>Category Code</th>
-                        <th>Product Code</th>
-                        <th>Product Name</th>
-                        <th>Unit Value</th>
-                        <th>UM</th>
-                        <th>Product Price</th>
-                        <th>Product Status</th>
-                        <th>Action</th>
-                      </tr>
-                    </tfoot>
+                      ))}
+                      
+                     </tbody>
+                    
                   </table>
                   </div>
       </div>

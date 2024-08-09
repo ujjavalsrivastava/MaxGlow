@@ -85,18 +85,22 @@ const UserList = ()=>{
                         <th>Shop Name</th>
                         <th>Email</th>
                         <th>Mobile</th>
-                        <th>Joined</th>
+                        <th> Super Stockist Name</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1001</td>
-                        <td>KK</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>GM</td>
-    </tr>
+
+                    {data && data.getAllRetailerDtoList.map(row =>(
+                            <tr>
+                            <td>{row.retailerCode}</td>
+                            <td>{row.retailerName}</td>
+                            <td>{row.retailerShopName}</td>
+                            <td>{row.retailerEmail}</td>
+                            <td>{row.retailerMob}</td>
+                            <td>{row.retailerSuperStockistName}</td>
+                            </tr>
+                        )) }
+                     
                     </tbody>
                     
                   </table>
@@ -112,7 +116,7 @@ const UserList = ()=>{
                         <th>Shop Name</th>
                         <th>Email</th>
                         <th>Mobile</th>
-                        <th>Joined</th>
+                        <th>Super Stockist Name</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -142,101 +146,22 @@ const UserList = ()=>{
                         <th>Shop Name</th>
                         <th>Email</th>
                         <th>Mobile</th>
-                        <th>Joined</th>
+                        <th>Address Area</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1001</td>
-                        <td>sdf</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>GM</td>
-                       </tr>
-                       <tr>
-                        <td>1001</td>
-                        <td>sdf</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>GM</td>
-                       </tr>
-                       <tr>
-                        <td>1001</td>
-                        <td>sdf</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>GM</td>
-                       </tr>
-                       <tr>
-                        <td>1001</td>
-                        <td>sdf</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>GM</td>
-                       </tr>
-                       <tr>
-                        <td>1001</td>
-                        <td>sdf</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>GM</td>
-                       </tr>
-                       <tr>
-                        <td>1001</td>
-                        <td>sdf</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>GM</td>
-                       </tr>
-                       <tr>
-                        <td>1001</td>
-                        <td>sdf</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>GM</td>
-                       </tr>
-                       <tr>
-                        <td>1001</td>
-                        <td>sdf</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>GM</td>
-                       </tr>
-                       <tr>
-                        <td>1001</td>
-                        <td>sdf</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>GM</td>
-                       </tr>
-                       <tr>
-                        <td>1001</td>
-                        <td>sdf</td>
-                        <td>Cream</td>
-                        <td>200</td>
-                        <td>GM</td>
-                        <td>GM</td>
-                       </tr>
+                    {data && data.getAllStockDtoList.map(row =>(
+                            <tr>
+                            <td>{row.stockistCode}</td>
+                            <td>{row.stockistName}</td>
+                            <td>{row.stockistShopName}</td>
+                            <td>{row.stockistEmail}</td>
+                            <td>{row.stockistMob}</td>
+                            <td>{row.stockistDeliveryAddressArea}</td>
+                            </tr>
+                        )) }
                     </tbody>
-                    <tfoot>
-                      <tr>
-                        <th>Code</th>
-                        <th> Name</th>
-                        <th>Shop Name</th>
-                        <th>Email</th>
-                        <th>Mobile</th>
-                        <th>Joined</th>
-                      </tr>
-                    </tfoot>
+                 
                   </table>
                   </div>
               </div>
