@@ -38,7 +38,7 @@ useEffect(()=>{
     <div class="content">
       <div class="info-box">
       <h4 class="text-black">Product List</h4>
-    
+      
       <div class="table-responsive">
                   <table id="example2" class="table table-bordered table-hover" data-name="cool-table">
                     <thead>

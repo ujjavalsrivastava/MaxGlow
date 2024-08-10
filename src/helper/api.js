@@ -30,3 +30,32 @@ export async function fetchData(endpoint, options = {}) {
     return data;
 }
 
+
+export async function fetchDataFile(endpoint, options = {}) {
+    const url = `${import.meta.env.VITE_BACKEND_URL}${endpoint}`;
+    const headers = {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        ...options.headers,
+    };
+
+    console.log('Request URL:', url);
+    console.log('Request Method:', options.method || 'GET');
+    console.log('Request Headers:', headers);
+    if (options.body) {
+        console.log('Request Body:', options.body);
+    }
+
+    const response = await fetch(url, {
+        ...options,
+        headers,
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status} (${response.statusText})`);
+    }
+
+    const data = await response.json();
+    return data;
+}
+
