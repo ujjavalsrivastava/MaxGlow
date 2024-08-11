@@ -3,6 +3,15 @@
 import { Link } from "react-router-dom";
 
 const SideBar = () => {
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("token.data");
+    navigate("/");
+  };
+
+  const userDetails = localStorage.getItem("token.data");
+  const obj = JSON.parse(userDetails);
  
   return (
     <>
@@ -13,8 +22,8 @@ const SideBar = () => {
     <div class="user-panel">
       <div class="image text-center"><img src="dist/img/img1.jpg" class="img-circle" alt="User Image"/> </div>
       <div class="info">
-        <p>Alexander Pierce</p>
-        <a href="#"><i class="fa fa-cog"></i></a> <a href="#"><i class="fa fa-envelope-o"></i></a> <a href="#"><i class="fa fa-power-off"></i></a> </div>
+        <p>{obj.personName}</p>
+        <a href="#"><i class="fa fa-cog"></i></a> <a href="#"><i class="fa fa-envelope-o"></i></a> <i onClick={logout} class="fa fa-power-off"></i> </div>
     </div>
     
 

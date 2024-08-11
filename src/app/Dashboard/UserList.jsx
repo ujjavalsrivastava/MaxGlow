@@ -20,6 +20,35 @@ const UserList = ()=>{
 
    console.log(data);
    
+   const changeStatus = async(email,mob,status)=>{
+    const s =  status?'InActive':'Active';
+    const apiStatus =  status?false:true;
+    if (window.confirm(`Are you sure to change ${s}`)) {
+      try{
+
+      
+      const response = await fetchData('/user/updateUserStatus', {
+        method: 'POST',
+        body: JSON.stringify({ 
+          "email": email,
+          "mob": mob,
+          "currentStatus": apiStatus
+      
+      }),
+    });
+    if (response.status) {
+      toast.success(response.msg);
+      fetchUserList();
+    } else {
+      toast.error(response.msg);
+    }
+  } catch (error) {
+    toast.error(error.message);
+  }
+    
+     
+    } 
+   }
      
      useEffect(()=>{
         fetchUserList();
@@ -55,6 +84,8 @@ const UserList = ()=>{
                         <th>Email</th>
                         <th>Mobile</th>
                         <th>Super Stockist Name</th>
+                        <th>Status</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -66,6 +97,8 @@ const UserList = ()=>{
                             <td>{row.parlourUserEmail}</td>
                             <td>{row.parlourUserMob}</td>
                             <td>{row.parlourUserSuperStockistName}</td>
+                            <td>{row.parlourUserCurrentStatus ? 'Active':'Inactive'}</td>
+                            <td><a href="javascript:void(0)" onClick={() => changeStatus(row.parlourUserEmail,row.parlourUserMob,row.parlourUserCurrentStatus)}> Edit</a></td>
                             </tr>
                         )) }
                     

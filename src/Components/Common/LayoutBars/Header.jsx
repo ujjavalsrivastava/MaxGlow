@@ -9,6 +9,10 @@ const Header = () => {
     localStorage.removeItem("token.data");
     navigate("/");
   };
+  const userDetails = localStorage.getItem("token.data");
+  const obj = JSON.parse(userDetails);
+
+  
   const [data, setdata] = useState(null);
 
   //   const fetchProfile = async()=>{
@@ -245,7 +249,8 @@ const Header = () => {
                       />
                     </div>
                     <p class="text-left">
-                      Florence Douglas <small>florence@gmail.com</small>{" "}
+                     
+                     {obj.personName}<small>{obj.email}</small>{" "}
                     </p>
                     <div class="view-link text-left">
                       <a href="#">View Profile</a>{" "}
@@ -257,27 +262,8 @@ const Header = () => {
                       <i class="icon-profile-male"></i> My Profile
                     </Link>
                   </li>
-                  <li>
-                    <Link to={"/kyc"}>
-                      <i class="icon-profile-male"></i> My KYC
-                    </Link>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="icon-wallet"></i> My Balance
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="icon-envelope"></i> Inbox
-                    </a>
-                  </li>
-                  <li role="separator" class="divider"></li>
-                  <li>
-                    <a href="#">
-                      <i class="icon-gears"></i> Account Setting
-                    </a>
-                  </li>
+                 
+                 
                   <li role="separator" class="divider"></li>
                   <li>
                     <a href="javascript:void(0)" onClick={logout}>

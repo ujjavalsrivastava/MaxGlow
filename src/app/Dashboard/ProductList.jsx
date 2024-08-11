@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { fetchData } from "../../helper/api";
+import { useNavigate } from "react-router-dom";
 
 const ProductList = ()=>{
 
 
 const[data,setData] = useState(null);
+
+const navigate =  useNavigate();
 
 const fetchProduct = async()=>{
    try { 
@@ -18,6 +21,10 @@ const fetchProduct = async()=>{
      } catch (error) {
        toast.error(error.message);
      }
+}
+
+const editProduct  = (data)=>{
+  navigate('/product-edit',{state:data});
 }
 
 console.log('data '+ JSON.stringify(data));
@@ -66,7 +73,7 @@ useEffect(()=>{
                         <td>{row.productUM}</td>
                         <td>{row.productPrice}</td>
                         <td><span class={row.productStatus ? 'label label-success':'label label-danger'}>{row.productStatus?'Active':'InActive'}</span></td>
-                        <td><i class="fa fa-pencil" aria-hidden="true"></i></td>
+                        <td><i onClick={()=>editProduct(row)} class="fa fa-pencil" aria-hidden="true"></i></td>
                       </tr>
                       ))}
                       
