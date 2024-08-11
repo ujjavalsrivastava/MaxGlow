@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchData } from "../../helper/api";
-
+import { toast } from "react-toastify";
 const UserList = ()=>{
 
     const[tabActive,setTabactive] = useState(1);
@@ -19,8 +19,10 @@ const UserList = ()=>{
      }
 
    console.log(data);
+
    
-   const changeStatus = async(email,mob,status)=>{
+   
+   const changeStatus = async(email,mob,status,type)=>{
     const s =  status?'InActive':'Active';
     const apiStatus =  status?false:true;
     if (window.confirm(`Are you sure to change ${s}`)) {
@@ -29,7 +31,8 @@ const UserList = ()=>{
       
       const response = await fetchData('/user/updateUserStatus', {
         method: 'POST',
-        body: JSON.stringify({ 
+        body: JSON.stringify({
+          'userType':type,
           "email": email,
           "mob": mob,
           "currentStatus": apiStatus
@@ -98,7 +101,7 @@ const UserList = ()=>{
                             <td>{row.parlourUserMob}</td>
                             <td>{row.parlourUserSuperStockistName}</td>
                             <td>{row.parlourUserCurrentStatus ? 'Active':'Inactive'}</td>
-                            <td><a href="javascript:void(0)" onClick={() => changeStatus(row.parlourUserEmail,row.parlourUserMob,row.parlourUserCurrentStatus)}> Edit</a></td>
+                            <td><a href="javascript:void(0)" onClick={() => changeStatus(row.parlourUserEmail,row.parlourUserMob,row.parlourUserCurrentStatus,'P')}> Edit</a></td>
                             </tr>
                         )) }
                     
@@ -119,6 +122,8 @@ const UserList = ()=>{
                         <th>Email</th>
                         <th>Mobile</th>
                         <th> Super Stockist Name</th>
+                        <th> Status</th>
+                        <th> Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -131,6 +136,8 @@ const UserList = ()=>{
                             <td>{row.retailerEmail}</td>
                             <td>{row.retailerMob}</td>
                             <td>{row.retailerSuperStockistName}</td>
+                            <td>{row.retailerCurrentStatus ? 'Active':'Inactive'}</td>
+                            <td><a href="javascript:void(0)" onClick={() => changeStatus(row.retailerEmail,row.retailerMob,row.retailerCurrentStatus,'R')}> Edit</a></td>
                             </tr>
                         )) }
                      
@@ -150,6 +157,8 @@ const UserList = ()=>{
                         <th>Email</th>
                         <th>Mobile</th>
                         <th>Super Stockist Name</th>
+                        <th>Status</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -161,6 +170,8 @@ const UserList = ()=>{
                             <td>{row.dealerEmail}</td>
                             <td>{row.dealerMob}</td>
                             <td>{row.dealerSuperStockistName}</td>
+                            <td>{row.dealerCurrentStatus ? 'Active':'Inactive'}</td>
+                            <td><a href="javascript:void(0)" onClick={() => changeStatus(row.dealerEmail,row.dealerMob,row.dealerCurrentStatus,'D')}> Edit</a></td>
                             </tr>
                         )) }
        
@@ -180,6 +191,8 @@ const UserList = ()=>{
                         <th>Email</th>
                         <th>Mobile</th>
                         <th>Address Area</th>
+                        <th>Status</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -191,6 +204,8 @@ const UserList = ()=>{
                             <td>{row.stockistEmail}</td>
                             <td>{row.stockistMob}</td>
                             <td>{row.stockistDeliveryAddressArea}</td>
+                            <td>{row.stockistCurrentStatus ? 'Active':'Inactive'}</td>
+                            <td><a href="javascript:void(0)" onClick={() => changeStatus(row.stockistEmail,row.stockistMob,row.stockistCurrentStatus,'S')}> Edit</a></td>
                             </tr>
                         )) }
                     </tbody>

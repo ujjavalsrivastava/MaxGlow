@@ -5,13 +5,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const ProductEdit = ()=>{
     const[catgory,setCategory]=useState([]);
-    const[productSave,setProductSave]=useState(null);
+    
     const[image,setImage]=useState(null);
 
     const navigate  = useNavigate();
 
     const { state } = useLocation();
-
+    const[productSave,setProductSave]=useState(state);
     console.log('state', JSON.stringify(state));
     
     const fetchCatgory = async()=>{
@@ -32,7 +32,7 @@ const ProductEdit = ()=>{
         //   console.log(event.target.files[0]);
       };
      const handleChange = (e)=>{
-        setProductSave((pre)=>({
+      setProductSave((pre)=>({
             ...pre,
             [e.target.name]:e.target.value
         }))
@@ -57,7 +57,7 @@ const ProductEdit = ()=>{
 
            
 
-            fetch('http://103.60.102.203:8080/MaxGlow/user/addNewProduct', {
+            fetch('http://103.60.102.203:8080/MaxGlow/user/updateProductDetails', {
                 method: 'POST',
                 body: formData,
               })
@@ -179,7 +179,7 @@ const ProductEdit = ()=>{
                 <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">Product Image</label>
-                    <input class="form-control" name="image" onChange={handleFileChange} type="file" />
+                    <input class="form-control" name="image" onChange={handleFileChange} type="file" required/>
                     <img src={state && state?.productImage} class="responsive"/>
                   </div>
                 </div>

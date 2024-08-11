@@ -175,7 +175,7 @@ const ProductAdd = ()=>{
                 <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">Product Image</label>
-                    <input class="form-control" name="image" onChange={handleFileChange} type="file" />
+                    <input class="form-control" name="image" onChange={handleFileChange} type="file" required/>
                     
                   </div>
                 </div>
