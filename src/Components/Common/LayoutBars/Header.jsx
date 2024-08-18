@@ -237,7 +237,7 @@ const Header = () => {
                     class="user-image"
                     alt="User Image"
                   />{" "}
-                  <span class="hidden-xs">Alexander Pierce</span>{" "}
+                  <span class="hidden-xs">{obj.personName}</span>{" "}
                 </a>
                 <ul class="dropdown-menu">
                   <li class="user-header">
