@@ -1,8 +1,10 @@
 // import { IoMdHome } from "react-icons/io";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SideBar = () => {
+
+  const navigate =  useNavigate();
 
   const logout = () => {
     localStorage.removeItem("token");
