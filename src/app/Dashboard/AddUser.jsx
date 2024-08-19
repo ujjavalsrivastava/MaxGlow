@@ -163,7 +163,7 @@ useEffect(()=>{
               <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">Type</label>
-                    <select class="custom-select form-control" name="dealerRole" id="dealerRole" onChange={(e) => {handleChange(e),setcheckType(e.target.value)}}>
+                    <select class="custom-select form-control" required name="dealerRole" id="dealerRole" onChange={(e) => {handleChange(e),setcheckType(e.target.value)}}>
                       <option value="">Select Option</option>
                       <option value="D">Dealer</option>
                       <option value="S">Stock List</option>

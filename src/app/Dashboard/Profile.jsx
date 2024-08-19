@@ -3,16 +3,8 @@ import { fetchProfile } from "../../store/profileReducer";
 import { useSelector, useDispatch } from "react-redux";
 
 const Profile = () => {
-  const dispatch = useDispatch();
-  const profile = useSelector((state) => state.profile);
-
-  const [data, setdata] = useState(null);
-
-  useEffect(() => {
-    if (profile?.status !== "succeeded") {
-      dispatch(fetchProfile());
-    }
-  }, []);
+  const userDetails = localStorage.getItem("token.data");
+  const obj = JSON.parse(userDetails);
 
   return (
     <>
@@ -46,12 +38,12 @@ const Profile = () => {
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group has-feedback">
-                          <label class="control-label">First Name</label>
+                          <label class="control-label">Full Name</label>
                           <input
                             class="form-control"
                             placeholder="First Name"
                             type="text"
-                            value={data && data.name}
+                            value={obj && obj.personName}
                           />
                           <span
                             class="fa fa-user form-control-feedback"
@@ -61,16 +53,14 @@ const Profile = () => {
                       </div>
                       <div class="col-md-6">
                         <div class="form-group has-feedback">
-                          <label class="control-label">Last Name</label>
+                          <label class="control-label">Mobile No</label>
                           <input
                             class="form-control"
                             placeholder="Last Name"
                             type="text"
+                            value={obj && obj.mobile}
                           />
-                          <span
-                            class="fa fa-user form-control-feedback"
-                            aria-hidden="true"
-                          ></span>{" "}
+                          
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -80,7 +70,7 @@ const Profile = () => {
                             class="form-control"
                             placeholder="E-mail"
                             type="text"
-                            value={data && data.email}
+                            value={obj && obj.email}
                           />
                           <span
                             class="fa fa-envelope-o form-control-feedback"
@@ -90,19 +80,17 @@ const Profile = () => {
                       </div>
                       <div class="col-md-6">
                         <div class="form-group has-feedback">
-                          <label class="control-label">Contact Number</label>
+                          <label class="control-label">User Code</label>
                           <input
                             class="form-control"
                             placeholder="Contact Number"
                             type="text"
+                            value={obj && obj.userCode}
                           />
-                          <span
-                            class="fa fa-phone form-control-feedback"
-                            aria-hidden="true"
-                          ></span>{" "}
+                          
                         </div>
                       </div>
-                      <div class="col-md-6">
+                      {/* <div class="col-md-6">
                         <div class="form-group has-feedback">
                           <label class="control-label">Company</label>
                           <input
@@ -157,7 +145,7 @@ const Profile = () => {
                         <button type="submit" class="btn btn-success">
                           Submit
                         </button>
-                      </div>
+                      </div> */}
                     </div>
                   </form>
                 </div>
