@@ -23,7 +23,7 @@ const SideBar = () => {
       <div class="image text-center"><img src="dist/img/img1.jpg" class="img-circle" alt="User Image"/> </div>
       <div class="info">
         <p>{obj.personName}</p>
-        <a href="#"><i class="fa fa-cog"></i></a> <a href="#"><i class="fa fa-envelope-o"></i></a> <i onClick={logout} class="fa fa-power-off"></i> </div>
+        <a href="#"><i class="fa fa-cog"></i></a> <a href="#"><i class="fa fa-envelope-o"></i></a>  <a href="javascript:void(0)" onClick={logout}> <i  class="fa fa-power-off"></i></a></div>
     </div>
     
 

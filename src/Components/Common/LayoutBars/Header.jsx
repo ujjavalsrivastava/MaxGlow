@@ -230,7 +230,7 @@ const Header = () => {
 
               <li class="dropdown user user-menu p-ph-res">
                 {" "}
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
                   {" "}
                   <img
                     src="dist/img/img1.jpg"
