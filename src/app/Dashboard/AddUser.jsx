@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchData } from "../../helper/api";
 import $ from 'jquery';
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 const AddUser = ()=>{
   const[checkType,setcheckType] = useState(null);
   const[state,setState] = useState([]);
@@ -10,6 +11,7 @@ const AddUser = ()=>{
   const[pinCode,setPinCode] = useState([]);
   const[stocklist,setstocklist] = useState([]);
   const[handleData,setHandleData] = useState(null);
+  const navigate = useNavigate();
 const fetchState = async()=>{
    try { 
     
@@ -175,28 +177,28 @@ useEffect(()=>{
                 <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">Full Name</label>
-                    <input class="form-control" name="dealerName" type="text" onChange={(e)=>handleChange(e)} />
+                    <input class="form-control" name="dealerName" required type="text" onChange={(e)=>handleChange(e)} />
                    
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">Name of Shop</label>
-                    <input class="form-control" name="dealerShopName" type="text" onChange={(e)=>handleChange(e)}/>
+                    <input class="form-control" name="dealerShopName" required type="text" onChange={(e)=>handleChange(e)}/>
                     
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">E-mail</label>
-                    <input class="form-control" name="dealerEmail" type="text" onChange={(e)=>handleChange(e)}/>
+                    <input class="form-control" name="dealerEmail" required type="text" onChange={(e)=>handleChange(e)}/>
 
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">Mobile Number</label>
-                    <input class="form-control" name="dealerMob" type="text" onChange={(e)=>handleChange(e)}/>
+                    <input class="form-control" name="dealerMob" required type="text" onChange={(e)=>handleChange(e)}/>
 
                    </div>
                 </div>
@@ -204,21 +206,21 @@ useEffect(()=>{
                 <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">password</label>
-                    <input class="form-control" name="dealerPassword" type="text" onChange={(e)=>handleChange(e)} />
+                    <input class="form-control" name="dealerPassword" required type="text" onChange={(e)=>handleChange(e)} />
                     
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">Address</label>
-                    <input class="form-control" name="dealerDeliveryAddress" type="text" onChange={(e)=>handleChange(e)}/>
+                    <input class="form-control" name="dealerDeliveryAddress" required type="text" onChange={(e)=>handleChange(e)}/>
                     
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">Select State</label>
-                    <select class="custom-select form-control"  id="stateName" onChange={(e) => {handleChange(e),findDisttrict(e.target.value)}}>
+                    <select class="custom-select form-control"  id="stateName" required onChange={(e) => {findDisttrict(e.target.value)}}>
                       <option value="">Select State</option>
                       {state && state.map(row =>(
                         <option>{row.stateName}</option>
@@ -232,7 +234,7 @@ useEffect(()=>{
                 <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">Select District</label>
-                    <select class="custom-select form-control" name="dealerDeliveryAddressDistrict" id="districtName" onChange={(e) => {handleChange(e),findCity(e.target.value),stockListUser(e.target.value)}}>
+                    <select class="custom-select form-control" required name="dealerDeliveryAddressDistrict" id="districtName" onChange={(e) => {handleChange(e),findCity(e.target.value),stockListUser(e.target.value)}}>
                       <option value="">Select District</option>
                       {district && district.map(row =>(
                         <option>{row.districtName}</option>
@@ -244,7 +246,7 @@ useEffect(()=>{
                 <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">Select City</label>
-                    <select class="custom-select form-control" name="dealerDeliveryAddressCity" id="cityName" onChange={(e)=>{handleChange(e),findPinCode(e.target.value)}}>
+                    <select class="custom-select form-control" required name="dealerDeliveryAddressCity" id="cityName" onChange={(e)=>{handleChange(e),findPinCode(e.target.value)}}>
                       <option value="">Select City</option>
                       {city && city.map(row =>(
                         <option>{row.cityName}</option>
@@ -256,7 +258,7 @@ useEffect(()=>{
                 <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">Select PinCode</label>
-                    <select class="custom-select form-control" id="dealerDeliveryAddressPincode" name="dealerDeliveryAddressPincode" onChange={(e)=>handleChange(e)}>
+                    <select class="custom-select form-control" required id="dealerDeliveryAddressPincode" name="dealerDeliveryAddressPincode" onChange={(e)=>handleChange(e)}>
                       <option value="">Select PinCode</option>
                       {pinCode && pinCode.map(row =>(
                         <option>{row.pinCode}</option>
@@ -268,14 +270,14 @@ useEffect(()=>{
                 <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">Area</label>
-                    <input class="form-control" name="dealerDeliveryAddressArea" type="text" onChange={(e)=>handleChange(e)} />
+                    <input class="form-control" name="dealerDeliveryAddressArea" required type="text" onChange={(e)=>handleChange(e)} />
                   
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">Landmark</label>
-                    <input class="form-control" name="dealerDeliveryAddressLandmark" type="text" onChange={(e)=>handleChange(e)} />
+                    <input class="form-control" name="dealerDeliveryAddressLandmark" required type="text" onChange={(e)=>handleChange(e)} />
                     
                   </div>
                 </div>
