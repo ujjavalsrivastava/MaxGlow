@@ -218,7 +218,7 @@ useEffect(()=>{
                 <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">Select State</label>
-                    <select class="custom-select form-control" name="stateName" id="stateName" onChange={(e) => {handleChange(e),findDisttrict(e.target.value)}}>
+                    <select class="custom-select form-control"  id="stateName" onChange={(e) => {handleChange(e),findDisttrict(e.target.value)}}>
                       <option value="">Select State</option>
                       {state && state.map(row =>(
                         <option>{row.stateName}</option>
@@ -256,7 +256,7 @@ useEffect(()=>{
                 <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">Select PinCode</label>
-                    <select class="custom-select form-control" id="location1" name="location" onChange={(e)=>handleChange(e)}>
+                    <select class="custom-select form-control" id="dealerDeliveryAddressPincode" name="dealerDeliveryAddressPincode" onChange={(e)=>handleChange(e)}>
                       <option value="">Select PinCode</option>
                       {pinCode && pinCode.map(row =>(
                         <option>{row.pinCode}</option>
