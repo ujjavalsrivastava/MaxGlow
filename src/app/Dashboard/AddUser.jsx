@@ -285,10 +285,10 @@ useEffect(()=>{
                   <div class="col-md-6">
                   <div class="form-group has-feedback">
                     <label class="control-label">Super Stockist</label>
-                    <select class="custom-select form-control"  name="dealerDeliveryAddressPincode" onChange={(e)=>handleChange(e)}>
+                    <select class="custom-select form-control" required name="dealerDeliveryAddressPincode" onChange={(e)=>handleChange(e)}>
                       <option value="">Select PinCode</option>
                       {stocklist && stocklist.map(row =>(
-                        <option>{row.pinCode}</option>
+                        <option value={row.ssCode}>{row.ssName}</option>
                       ))}
                     </select>
                     
